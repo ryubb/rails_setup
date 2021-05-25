@@ -7,6 +7,24 @@ services:
   #     - ./tmp/db:/var/lib/postgresql/data
   #   environment:
   #     POSTGRES_PASSWORD: "postgres"
+
+  # db:
+  #   image: mysql:5.7
+  #   container_name: terrar_db
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: rails_db
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD: root
+  #     TZ: 'Asia/Tokyo'
+  #   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  #   volumes:
+  #     - ./tmp/db/data:/var/lib/mysql
+  #     - ./tmp/db/my.cnf:/etc/mysql/conf.d/my.cnf
+  #     - ./tmp/db/sql:/docker-entrypoint-initdb.d
+  #   ports:
+  #     - 3306:3306
+
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
