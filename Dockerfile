@@ -6,7 +6,7 @@ RUN mkdir /rails_app
 WORKDIR /rails_app
 COPY Gemfile /rails_app/Gemfile
 COPY Gemfile.lock /rails_app/Gemfile.lock
-RUN bundle install
+RUN bundle install --without production
 COPY . /rails_app
 
 # ここのスクリプトは必要？何のために存在する？
