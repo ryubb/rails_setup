@@ -1,4 +1,5 @@
 FROM ruby:2.7
+
 RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client
 RUN npm install -g yarn
 RUN mkdir /rails_app
@@ -8,6 +9,7 @@ COPY Gemfile.lock /rails_app/Gemfile.lock
 RUN bundle install
 COPY . /rails_app
 
+# ここのスクリプトは必要？何のために存在する？
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
